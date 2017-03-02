@@ -56,7 +56,7 @@ public class ShopService {
 
 
         ArrayList<Item> items = new ArrayList<>();
-        items.add(new Item(1, "Stetson hat", 200 + priceChange));
+        //items.add(new Item(1, "Stetson hat", 200 + priceChange));
         items.add(new Item(2, "Rifle", 500 + priceChange));
         return items;
     }
