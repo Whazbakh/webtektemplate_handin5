@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/out/artifacts/webtektemplate_4_war_exploded/out/artifacts/webtektemplate_4_war_exploded/webtektemplate_4_war_exploded.iml" filepath="$PROJECT_DIR$/out/artifacts/webtektemplate_4_war_exploded/out/artifacts/webtektemplate_4_war_exploded/webtektemplate_4_war_exploded.iml" />
+      <module fileurl="file://$PROJECT_DIR$/out/artifacts/webtektemplate_4_war_exploded/webtektemplate_4_war_exploded1.iml" filepath="$PROJECT_DIR$/out/artifacts/webtektemplate_4_war_exploded/webtektemplate_4_war_exploded1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/out/artifacts/webtektemplate_4_war_exploded/out/artifacts/webtektemplate_4_war_exploded/out/artifacts/webtektemplate_4_war_exploded/webtektemplate_4_war_exploded2.iml" filepath="$PROJECT_DIR$/out/artifacts/webtektemplate_4_war_exploded/out/artifacts/webtektemplate_4_war_exploded/out/artifacts/webtektemplate_4_war_exploded/webtektemplate_4_war_exploded2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webtektemplate_handin5.iml" filepath="$PROJECT_DIR$/webtektemplate_handin5.iml" />
+    </modules>
+  </component>
+</project>
