@@ -1,5 +1,9 @@
 package dk.cs.dwebtek;
 
+import dk.cs.au.dwebtek.CloudService;
+import dk.cs.au.dwebtek.OperationResult;
+import org.jdom2.Document;
+import org.jdom2.Element;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -19,7 +23,7 @@ public class ShopService {
      * Our Servlet session. We will need this for the shopping basket
      */
     HttpSession session;
-
+    private static CloudService service = new CloudService();
     public ShopService(@Context HttpServletRequest servletRequest) {
         session = servletRequest.getSession();
     }
@@ -34,9 +38,23 @@ public class ShopService {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Item> getItems() {
 
+        OperationResult<Document> res = service.listItems();
+        if(res.isSuccess()) {
+            List<Element> items = res.getResult().getRootElement().getChildren();
+            //for(Element e : itemList) {
+            //  for(Element x : e.getChildren())
+            //   System.out.println(x.getValue());
+            //     }
+        } else {
+            System.out.println(res.getMessage());
+        }
+
+
         //You should get the items from the cloud server.
         //In the template we just construct some simple data as an array of objects
         // Here we have the JSON automated automatically by having models.
+
+
         ArrayList<Item> items = new ArrayList<>();
         items.add(new Item(1, "Stetson hat", 200 + priceChange));
         items.add(new Item(2, "Rifle", 500 + priceChange));
