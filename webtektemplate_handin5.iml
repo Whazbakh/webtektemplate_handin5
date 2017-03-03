@@ -26,12 +26,10 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="file://$MODULE_DIR$/../cloud" />
+          <root url="file://$MODULE_DIR$/../cloud/out/production/cloud" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/../cloud/src" />
-        </SOURCES>
+        <SOURCES />
       </library>
     </orderEntry>
   </component>
