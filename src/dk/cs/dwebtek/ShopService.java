@@ -4,6 +4,7 @@ import dk.cs.au.dwebtek.CloudService;
 import dk.cs.au.dwebtek.OperationResult;
 import org.jdom2.Document;
 import org.jdom2.Element;
+import org.jdom2.Namespace;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -17,12 +18,15 @@ import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.jdom2.Namespace.getNamespace;
+
 @Path("shop")
 public class ShopService {
     /**
      * Our Servlet session. We will need this for the shopping basket
      */
     HttpSession session;
+    private static final Namespace NS = getNamespace("http://www.cs.au.dk/dWebTek/2014");
     private static CloudService service = new CloudService();
     public ShopService(@Context HttpServletRequest servletRequest) {
         session = servletRequest.getSession();
@@ -32,6 +36,20 @@ public class ShopService {
      * Make the price increase per request (for the sake of example)
      */
     private static int priceChange = 0;
+
+    public static void main(String[] args) {
+        OperationResult<Document> res = service.listItems();
+        System.out.println(res.getResult().getRootElement().getChildren());
+        if(res.isSuccess()) {
+            List<Element> itemList = res.getResult().getRootElement().getChildren();
+            for(Element e : itemList) {
+                testItemFromElement(e);
+            }
+        } else {
+            System.out.println(res.getMessage());
+        }
+    }
+
 
     @GET
     @Path("items")
@@ -47,20 +65,28 @@ public class ShopService {
         } else {
             System.out.println(res.getMessage());
         }
-
         //You should get the items from the cloud server.
         //In the template we just construct some simple data as an array of objects
         // Here we have the JSON automated automatically by having models.
         return items;
     }
 
-    public Item getItemFromElement(Element e) {
-        int id = Integer.parseInt(e.getChildText("itemID"));
-        String name = e.getChildText("itemName");
-        String URL = e.getChildText("itemURL");
-        int price = Integer.parseInt(e.getChildText("itemPrice"));
-        int stock = Integer.parseInt(e.getChildText("itemStock"));
-        String description = e.getChildText("itemDescription");
+    public static void testItemFromElement(Element e) {
+        System.out.println(e.getChildText("itemID", NS));
+        System.out.println(e.getChildText("itemName", NS));
+        System.out.println(e.getChildText("itemURL", NS));
+        System.out.println(e.getChildText("itemPrice", NS));
+        System.out.println(e.getChildText("itemStock", NS));
+        System.out.println(e.getChildText("itemDescription", NS));
+    }
+
+    public static Item getItemFromElement(Element e) {
+        int id = Integer.parseInt(e.getChildText("itemID", NS));
+        String name = e.getChildText("itemName", NS);
+        String URL = e.getChildText("itemURL", NS);
+        int price = Integer.parseInt(e.getChildText("itemPrice", NS));
+        int stock = Integer.parseInt(e.getChildText("itemStock", NS));
+        String description = e.getChildText("itemDescription", NS);
         return new Item(id, name, URL, price, stock, description);
     }
 

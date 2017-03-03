@@ -6,6 +6,7 @@
         <element id="directory" name="classes">
           <element id="module-output" name="webtektemplate_handin5" />
           <element id="dir-copy" path="$PROJECT_DIR$/../cloud" />
+          <element id="dir-copy" path="$PROJECT_DIR$/../cloud/out/production/cloud" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="webtektemplate_handin5/web/Web" />
