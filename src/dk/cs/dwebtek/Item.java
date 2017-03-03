@@ -8,11 +8,17 @@ public class Item {
     private int id;
     private String name;
     private int price;
+    private String URL;
+    private int stock;
+    private String description;
 
-    public Item(int id, String name, int price) {
+    public Item(int id, String name, String URL, int price, int stock, String description) {
         this.id = id;
         this.name = name;
+        this.URL = URL;
         this.price = price;
+        this.stock = stock;
+        this.description = description;
     }
 
     public int getId() {

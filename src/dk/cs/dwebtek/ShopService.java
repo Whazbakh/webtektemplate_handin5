@@ -37,28 +37,31 @@ public class ShopService {
     @Path("items")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Item> getItems() {
-
+        ArrayList<Item> items = new ArrayList<>();
         OperationResult<Document> res = service.listItems();
         if(res.isSuccess()) {
-            List<Element> items = res.getResult().getRootElement().getChildren();
-            //for(Element e : itemList) {
-            //  for(Element x : e.getChildren())
-            //   System.out.println(x.getValue());
-            //     }
+            List<Element> itemList = res.getResult().getRootElement().getChildren();
+            for(Element e : itemList) {
+                items.add(getItemFromElement(e));
+            }
         } else {
             System.out.println(res.getMessage());
         }
 
-
         //You should get the items from the cloud server.
         //In the template we just construct some simple data as an array of objects
         // Here we have the JSON automated automatically by having models.
-
-
-        ArrayList<Item> items = new ArrayList<>();
-        //items.add(new Item(1, "Stetson hat", 200 + priceChange));
-        items.add(new Item(2, "Rifle", 500 + priceChange));
         return items;
+    }
+
+    public Item getItemFromElement(Element e) {
+        int id = Integer.parseInt(e.getChildText("itemID"));
+        String name = e.getChildText("itemName");
+        String URL = e.getChildText("itemURL");
+        int price = Integer.parseInt(e.getChildText("itemPrice"));
+        int stock = Integer.parseInt(e.getChildText("itemStock"));
+        String description = e.getChildText("itemDescription");
+        return new Item(id, name, URL, price, stock, description);
     }
 
 
