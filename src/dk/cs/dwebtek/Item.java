@@ -1,9 +1,11 @@
 package dk.cs.dwebtek;
 
+import java.io.Serializable;
+
 /**
  * Created by mortenkrogh-jespersen on 28/02/2017.
  */
-public class Item {
+public class Item implements Serializable{
 
     private int id;
     private String name;
@@ -45,7 +47,4 @@ public class Item {
         this.price = price;
     }
 
-    public String toString() {
-        return name;
-    }
 }

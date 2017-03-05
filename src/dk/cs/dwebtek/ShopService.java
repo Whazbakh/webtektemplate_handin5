@@ -15,6 +15,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.ext.MessageBodyWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +54,7 @@ public class ShopService {
 
     @GET
     @Path("items")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces("application/json")
     public List<Item> getItems() {
         ArrayList<Item> items = new ArrayList<>();
         OperationResult<Document> res = service.listItems();
